@@ -15,6 +15,10 @@
 #include <DirectXMath.h> 
 #include <DirectXTex.h>
 
+#include <fstream>
+#include <sstream>
+using namespace std;
+
 using namespace DirectX;
 
 #include <d3dcompiler.h>
@@ -285,7 +289,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 
 	// DirectInputの初期化
 	DirectXInput _key;
-	_key.InputInit(result, window.w, window.hwnd); // ★Inputクラス :: イニシャライズ
+	_key.Init(result, window.w, window.hwnd); // ★Inputクラス :: イニシャライズ
 
 #pragma endregion
 #pragma region 描画初期化処理
@@ -1055,7 +1059,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 #pragma region DirectX毎フレーム処理
 		// DIrectX毎フレーム処理(更新処理) ここから
 
-		_key.InputUpdate(); // ★Inputクラス :: アップデート
+		_key.Update(); // ★Inputクラス :: アップデート
 
 			// いずれかのキーを押していたら
 		if (_key.IsKeyDown(DIK_UP) || _key.IsKeyDown(DIK_DOWN) ||
